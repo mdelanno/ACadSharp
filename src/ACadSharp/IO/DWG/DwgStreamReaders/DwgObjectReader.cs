@@ -1083,6 +1083,9 @@ namespace ACadSharp.IO.DWG
 				case "BLOCKVISIBILITYPARAMETER":
 					template = this.readBlockVisibilityParameter();
 					break;
+				case "BLOCKLINEARPARAMETER":
+					template = this.readBlockLinearParameter();
+					break;
 				default:
 					break;
 			}
@@ -1266,6 +1269,42 @@ namespace ACadSharp.IO.DWG
 			{
 				template.StateTemplates.Add(this.readState());
 			}
+
+			return template;
+		}
+
+		private void readBlock2PtParameter(CadBlock2PtParameterTemplate template)
+		{
+			this.readBlockParameter(template);
+
+			//1010 1020 1030
+			template.Block2PtParameter.FirstPoint = this._mergedReaders.Read3BitDouble();
+
+			//1011 1021 1031
+			template.Block2PtParameter.SecondPoint = this._mergedReaders.Read3BitDouble();
+		}
+
+		private CadTemplate readBlockLinearParameter()
+		{
+			BlockLinearParameter blockLinearParameter = new BlockLinearParameter();
+			CadBlockLinearParameterTemplate template = new CadBlockLinearParameterTemplate(blockLinearParameter);
+
+			this.readBlock2PtParameter(template);
+
+			//140
+			blockLinearParameter.ActualDistance = this._mergedReaders.ReadBitDouble();
+
+			//141
+			blockLinearParameter.Increment = this._mergedReaders.ReadBitDouble();
+
+			//142
+			blockLinearParameter.Minimum = this._mergedReaders.ReadBitDouble();
+
+			//143
+			blockLinearParameter.Maximum = this._mergedReaders.ReadBitDouble();
+
+			//170
+			blockLinearParameter.DistanceType = (DistanceType)this._mergedReaders.ReadBitShort();
 
 			return template;
 		}

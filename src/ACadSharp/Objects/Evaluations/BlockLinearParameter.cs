@@ -1,4 +1,5 @@
 ﻿using ACadSharp.Attributes;
+using System;
 
 namespace ACadSharp.Objects.Evaluations
 {
@@ -28,6 +29,28 @@ namespace ACadSharp.Objects.Evaluations
 		public string Description { get; set; }
 
 		[DxfCodeValue(140)]
-		public double LabelOffset { get; set; }
+		public double ActualDistance { get; set; }
+
+		[DxfCodeValue(141)]
+		public double Increment { get; set; }
+
+		[DxfCodeValue(142)]
+		public double Minimum { get; set; }
+
+		[DxfCodeValue(143)]
+		public double Maximum { get; set; }
+
+		[DxfCodeValue(170)]
+		public DistanceType DistanceType { get; set; }
+	}
+
+	[Flags]
+	public enum DistanceType
+	{
+		NoConstraint = 0,
+
+		Increment = 1,
+
+		ValuesList = 2
 	}
 }
