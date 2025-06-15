@@ -1291,20 +1291,64 @@ namespace ACadSharp.IO.DWG
 
 			this.readBlock2PtParameter(template);
 
+			//171
+			blockLinearParameter.Value171 = this._mergedReaders.ReadBitShort();
+
+			//172
+			blockLinearParameter.Value172 = this._mergedReaders.ReadBitShort();
+
+			//173
+			blockLinearParameter.Value173 = this._mergedReaders.ReadBitShort();
+
+			//94
+			blockLinearParameter.Value94 = this._mergedReaders.ReadBitLong();
+
+			//303
+			blockLinearParameter.Value303 = this._mergedReaders.ReadVariableText();
+
+			//174
+			blockLinearParameter.NumberOfConnections = this._mergedReaders.ReadBitShort();
+
+			//95
+			blockLinearParameter.Value95 = this._mergedReaders.ReadBitLong();
+
+			//304
+			blockLinearParameter.Value304 = this._mergedReaders.ReadVariableText();
+
+			this._mergedReaders.ReadBitLong();
+			this._mergedReaders.ReadBitLong();
+			this._mergedReaders.ReadBitLong();
+			this._mergedReaders.ReadBitLong();
+
+			//177
+			blockLinearParameter.BaseLocation = (LinearParameterBaseLocation)this._mergedReaders.ReadBitShort();
+
+			//305
+			blockLinearParameter.Name = this._mergedReaders.ReadVariableText();
+
+			//306
+			blockLinearParameter.Description = this._mergedReaders.ReadVariableText();
+
 			//140
-			blockLinearParameter.ActualDistance = this._mergedReaders.ReadBitDouble();
+			blockLinearParameter.DimensionLineOffset = this._mergedReaders.ReadBitDouble();
+
+			//96
+			blockLinearParameter.Flags = this._mergedReaders.ReadBitLong();
 
 			//141
-			blockLinearParameter.Increment = this._mergedReaders.ReadBitDouble();
-
-			//142
 			blockLinearParameter.Minimum = this._mergedReaders.ReadBitDouble();
 
-			//143
+			//142
 			blockLinearParameter.Maximum = this._mergedReaders.ReadBitDouble();
 
-			//170
-			blockLinearParameter.DistanceType = (DistanceType)this._mergedReaders.ReadBitShort();
+			//143
+			blockLinearParameter.Increment = this._mergedReaders.ReadBitDouble();
+
+			int numberOfValues = this._objectReader.ReadBitShort();
+			for (int i = 0; i < numberOfValues; i++)
+			{
+				blockLinearParameter.Values.Add(this._mergedReaders.ReadBitDouble());
+			}
 
 			return template;
 		}
