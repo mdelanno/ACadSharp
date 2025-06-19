@@ -4,19 +4,13 @@ using System.Collections.Generic;
 
 namespace ACadSharp.Objects.Evaluations
 {
-	/// <summary>
-	/// Represents a BLOCKLINEARPARAMETER, in AutoCAD used to
-	/// control a distance between two points in a dynamic block.
-	/// </summary>
-	[DxfName(DxfFileToken.ObjectBlockLinearParameter)]
-	[DxfSubClass(DxfSubclassMarker.BlockLinearParameter)]
-	public class BlockLinearParameter : Block2PtParameter
+	public class BlockRotationParameter : Block2PtParameter
 	{
 		/// <inheritdoc/>
-		public override string ObjectName => DxfFileToken.ObjectBlockLinearParameter;
+		public override string ObjectName => DxfFileToken.ObjectBlockRotationParameter;
 
 		/// <inheritdoc/>
-		public override string SubclassMarker => DxfSubclassMarker.BlockLinearParameter;
+		public override string SubclassMarker => DxfSubclassMarker.BlockRotationParameter;
 
 		[DxfCodeValue(171)]
 		public short Value171 { get; set; }
@@ -45,8 +39,10 @@ namespace ACadSharp.Objects.Evaluations
 		[DxfCodeValue(177)]
 		public LinearParameterBaseLocation BaseLocation { get; set; }
 
+		public XYZ BaseAnglePoint { get; set; }
+
 		/// <summary>
-		/// Linear parameter name.
+		/// Rotation parameter name.
 		/// </summary>
 		[DxfCodeValue(305)]
 		public string Name { get; set; }
@@ -69,16 +65,6 @@ namespace ACadSharp.Objects.Evaluations
 		[DxfCodeValue(141)]
 		public double Increment { get; set; }
 
-		[DxfCodeValue(140)]
-		public ParameterValueType AngleType { get; set; }
-
 		public List<double> Values { get; } = [];
-	}
-
-	public enum LinearParameterBaseLocation
-	{
-		StartPoint,
-
-		MiddlePoint
 	}
 }

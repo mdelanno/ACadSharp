@@ -94,6 +94,7 @@
 		public const string Block1PtParameter = "AcDbBlock1PtParameter";
 		public const string Block2PtParameter = "AcDbBlock2PtParameter";
 		public const string BlockLinearParameter = "AcDbBlockLinearParameter";
+		public const string BlockRotationParameter = "AcDbBlockRotationParameter";
 
 		public const string BlockVisibilityParameter = "AcDbBlockVisibilityParameter";
 		public const string DbColor = "AcDbColor";

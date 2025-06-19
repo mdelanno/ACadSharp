@@ -1086,6 +1086,9 @@ namespace ACadSharp.IO.DWG
 				case "BLOCKLINEARPARAMETER":
 					template = this.readBlockLinearParameter();
 					break;
+				case "BLOCKROTATIONPARAMETER":
+					template = this.readBlockRotationParameter();
+					break;
 				default:
 					break;
 			}
@@ -1284,7 +1287,7 @@ namespace ACadSharp.IO.DWG
 			template.Block2PtParameter.SecondPoint = this._mergedReaders.Read3BitDouble();
 		}
 
-		private CadTemplate readBlockLinearParameter()
+		private CadBlockLinearParameterTemplate readBlockLinearParameter()
 		{
 			BlockLinearParameter blockLinearParameter = new BlockLinearParameter();
 			CadBlockLinearParameterTemplate template = new CadBlockLinearParameterTemplate(blockLinearParameter);
@@ -1348,6 +1351,77 @@ namespace ACadSharp.IO.DWG
 			for (int i = 0; i < numberOfValues; i++)
 			{
 				blockLinearParameter.Values.Add(this._mergedReaders.ReadBitDouble());
+			}
+
+			return template;
+		}
+
+		private CadTemplate readBlockRotationParameter()
+		{
+			BlockRotationParameter blockRotationParameter = new BlockRotationParameter();
+			CadBlockRotationParameterTemplate template = new CadBlockRotationParameterTemplate(blockRotationParameter);
+
+			this.readBlock2PtParameter(template);
+
+			//171
+			blockRotationParameter.Value171 = this._mergedReaders.ReadBitShort();
+
+			//172
+			blockRotationParameter.Value172 = this._mergedReaders.ReadBitShort();
+
+			//173
+			blockRotationParameter.Value173 = this._mergedReaders.ReadBitShort();
+
+			//94
+			blockRotationParameter.Value94 = this._mergedReaders.ReadBitLong();
+
+			//303
+			blockRotationParameter.Value303 = this._mergedReaders.ReadVariableText();
+
+			//174
+			blockRotationParameter.NumberOfConnections = this._mergedReaders.ReadBitShort();
+
+			//95
+			blockRotationParameter.Value95 = this._mergedReaders.ReadBitLong();
+
+			//304
+			blockRotationParameter.Value304 = this._mergedReaders.ReadVariableText();
+
+			this._mergedReaders.ReadBitLong();
+			this._mergedReaders.ReadBitLong();
+			this._mergedReaders.ReadBitLong();
+			this._mergedReaders.ReadBitLong();
+
+			//177
+			blockRotationParameter.BaseLocation = (LinearParameterBaseLocation)this._mergedReaders.ReadBitShort();
+
+			blockRotationParameter.BaseAnglePoint = this._mergedReaders.Read3BitDouble();
+
+			//305
+			blockRotationParameter.Name = this._mergedReaders.ReadVariableText();
+
+			//306
+			blockRotationParameter.Description = this._mergedReaders.ReadVariableText();
+
+			//140
+			blockRotationParameter.DimensionLineOffset = this._mergedReaders.ReadBitDouble();
+
+			//96
+			blockRotationParameter.Flags = this._mergedReaders.ReadBitLong();
+
+			//141
+			blockRotationParameter.Minimum = this._mergedReaders.ReadBitDouble();
+
+			//142
+			blockRotationParameter.Maximum = this._mergedReaders.ReadBitDouble();
+
+			//143
+			blockRotationParameter.Increment = this._mergedReaders.ReadBitDouble();
+
+			int numberOfValues = this._objectReader.ReadBitShort();
+			for (int i = 0; i < numberOfValues; i++)
+			{
+				blockRotationParameter.Values.Add(this._mergedReaders.ReadBitDouble());
 			}
 
 			return template;
