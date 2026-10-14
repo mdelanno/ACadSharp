@@ -39,8 +39,14 @@ public partial class DimensionAssociation
 		[DxfCodeValue(91)]
 		public int GsMarker { get; set; }
 
-		//332
-		//ID of intersection object (geometry)
+		/// <summary>
+		/// Gets or sets the second geometry object of an intersection reference.
+		/// </summary>
+		/// <remarks>
+		/// Only written for an <see cref="ObjectOsnapType.Intersection"/> or <see cref="ObjectOsnapType.ApparentIntersection"/> reference.
+		/// </remarks>
+		[DxfCodeValue(DxfReferenceType.Handle, 332)]
+		public CadObject IntersectionGeometry { get; set; }
 
 		[DxfCodeValue(74)]
 		public SubentType IntersectionSubType { get; set; }

@@ -49,7 +49,6 @@ internal partial class DwgObjectWriter : DwgSectionIO
 			case AecWallStyle:
 			case AecCleanupGroup:
 			case AecBinRecord:
-			case DimensionAssociation:
 			case UnknownNonGraphicalObject:
 			case VisualStyle:
 			case ProxyObject:
@@ -1958,8 +1957,50 @@ internal partial class DwgObjectWriter : DwgSectionIO
 
 		//72
 		this._writer.WriteByte((byte)osnap.ObjectOsnapType);
-		//331
-		this._writer.HandleReference(DwgReferenceType.Undefined, osnap.Geometry);
+
+		//Path of ids to the main object: the object itself when it is not nested in a block reference.
+		this._writer.WriteBitLong(osnap.Geometry != null ? 1 : 0);
+		if (osnap.Geometry != null)
+		{
+			//331
+			this._writer.HandleReference(DwgReferenceType.SoftPointer, osnap.Geometry);
+		}
+
+		if (osnap.ObjectOsnapType != ObjectOsnapType.None)
+		{
+			//73
+			this._writer.WriteBitLong((int)osnap.SubentType);
+			//91
+			this._writer.WriteBitLong(osnap.GsMarker);
+			//Xref paths (301)
+			this._writer.WriteBitLong(0);
+		}
+
+		//40
+		this._writer.WriteBitDouble(osnap.GeometryParameter);
+		//10
+		this._writer.Write3BitDouble(osnap.OsnapPoint);
+
+		if (osnap.ObjectOsnapType == ObjectOsnapType.Intersection
+			|| osnap.ObjectOsnapType == ObjectOsnapType.ApparentIntersection)
+		{
+			this._writer.WriteBitLong(osnap.IntersectionGeometry != null ? 1 : 0);
+			if (osnap.IntersectionGeometry != null)
+			{
+				//332
+				this._writer.HandleReference(DwgReferenceType.HardPointer, osnap.IntersectionGeometry);
+			}
+
+			//74
+			this._writer.WriteBitLong((int)osnap.IntersectionSubType);
+			//92
+			this._writer.WriteBitLong(osnap.IntersectionGsMarker);
+			//Intersection xref paths (302)
+			this._writer.WriteBitLong(0);
+		}
+
+		//75
+		this._writer.WriteBit(osnap.HasLastPointRef);
 	}
 
 	private void writeParameterValueSet(ParameterValueSet valueSet)
