@@ -731,7 +731,6 @@ internal class DxfObjectsSectionWriter : DxfSectionWriterBase
 			case AecWallStyle:
 			case AecCleanupGroup:
 			case AecBinRecord:
-			case DimensionAssociation:
 			case Material:
 			case MultiLeaderObjectContextData:
 			case VisualStyle:
@@ -1660,6 +1659,15 @@ internal class DxfObjectsSectionWriter : DxfSectionWriterBase
 		this._writer.Write(40, osnapPoint.GeometryParameter);
 
 		this._writer.Write(10, osnapPoint.OsnapPoint);
+
+		//Written in this order by AutoCAD 2025.
+		if (osnapPoint.ObjectOsnapType == ObjectOsnapType.Intersection
+			|| osnapPoint.ObjectOsnapType == ObjectOsnapType.ApparentIntersection)
+		{
+			this._writer.WriteHandle(332, osnapPoint.IntersectionGeometry);
+			this._writer.Write(74, (short)osnapPoint.IntersectionSubType);
+			this._writer.Write(92, osnapPoint.IntersectionGsMarker);
+		}
 
 		this._writer.Write(75, (short)(osnapPoint.HasLastPointRef ? 1 : 0));
 	}

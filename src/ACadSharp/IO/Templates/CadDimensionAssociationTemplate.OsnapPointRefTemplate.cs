@@ -8,6 +8,8 @@ internal partial class CadDimensionAssociationTemplate
 	{
 		public ulong? ObjectHandle { get; set; }
 
+		public ulong? IntersectionHandle { get; set; }
+
 		public DimensionAssociation.OsnapPointRef OsnapPointRef { get; set; }
 
 		public OsnapPointRefTemplate(DimensionAssociation.OsnapPointRef pointRef)
@@ -20,6 +22,11 @@ internal partial class CadDimensionAssociationTemplate
 			if (builder.TryGetCadObject<CadObject>(this.ObjectHandle, out var obj))
 			{
 				OsnapPointRef.Geometry = obj;
+			}
+
+			if (builder.TryGetCadObject<CadObject>(this.IntersectionHandle, out var intersection))
+			{
+				OsnapPointRef.IntersectionGeometry = intersection;
 			}
 		}
 	}
