@@ -7287,15 +7287,11 @@ namespace ACadSharp.IO.DWG
 			//72
 			osnap.ObjectOsnapType = (ObjectOsnapType)this._mergedReaders.ReadByte();
 
-			//Path of ids to the main object (331)
+			//Path of ids to the main object (331), which is the last one: a trans-space reference starts with the viewport.
 			int idCount = this._mergedReaders.ReadBitLong();
 			for (int i = 0; i < idCount; i++)
 			{
-				ulong handle = this.handleReference();
-				if (i == 0)
-				{
-					template.ObjectHandle = handle;
-				}
+				template.ObjectHandle = this.handleReference();
 			}
 
 			if (osnap.ObjectOsnapType != ObjectOsnapType.None)
@@ -7324,11 +7320,7 @@ namespace ACadSharp.IO.DWG
 				int intersectionCount = this._mergedReaders.ReadBitLong();
 				for (int i = 0; i < intersectionCount; i++)
 				{
-					ulong handle = this.handleReference();
-					if (i == 0)
-					{
-						template.IntersectionHandle = handle;
-					}
+					template.IntersectionHandle = this.handleReference();
 				}
 
 				//74

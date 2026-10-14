@@ -63,6 +63,10 @@ public partial class DimensionAssociation
 		/// <summary>
 		/// Gets or sets the associated geometry object.
 		/// </summary>
+		/// <remarks>
+		/// The last object of the path of ids written in the file: a trans-space reference (paper space dimension associated
+		/// to model space geometry) starts with the viewport, which is not kept, and is written with the geometry only.
+		/// </remarks>
 		[DxfCodeValue(DxfReferenceType.Handle, 331)]
 		public CadObject Geometry { get; set; }
 	}
