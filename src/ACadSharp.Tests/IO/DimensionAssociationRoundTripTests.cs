@@ -73,7 +73,7 @@ public class DimensionAssociationRoundTripTests
 		DimensionAssociation association = new DimensionAssociation { AssociatedEntity = leader, AssociativityFlags = AssociativityFlags.FirstPointReference };
 		association.FirstPointRef = new DimensionAssociation.OsnapPointRef { ObjectOsnapType = ObjectOsnapType.Nearest, SubentType = SubentType.Edge, GsMarker = 1, GeometryParameter = 5 };
 		association.FirstPointRef.GeometryPath.Add(wall);
-		leader.CreateExtendedDictionary().Add("ACAD_DIMASSOC", association);
+		leader.CreateExtendedDictionary().Add("ACAD_DIMASSOC", Named(association));
 
 		CadDocument read = this.writeAndRead(doc, "dwg");
 
@@ -164,7 +164,7 @@ public class DimensionAssociationRoundTripTests
 		second.GeometryPath.Add(inside);
 		association.FirstPointRef = first;
 		association.SecondPointRef = second;
-		dimension.CreateExtendedDictionary().Add("ACAD_DIMASSOC", association);
+		dimension.CreateExtendedDictionary().Add("ACAD_DIMASSOC", Named(association));
 		return doc;
 	}
 
@@ -178,8 +178,14 @@ public class DimensionAssociationRoundTripTests
 		DimensionAssociation association = new DimensionAssociation { AssociatedEntity = dimension, AssociativityFlags = AssociativityFlags.FirstPointReference };
 		association.FirstPointRef = new DimensionAssociation.OsnapPointRef { ObjectOsnapType = ObjectOsnapType.Endpoint, SubentType = SubentType.Edge };
 		association.FirstPointRef.GeometryPath.Add(wall);
-		dimension.CreateExtendedDictionary().Add("ACAD_DIMASSOC", association);
+		dimension.CreateExtendedDictionary().Add("ACAD_DIMASSOC", Named(association));
 		return (doc, association);
+	}
+
+	private static DimensionAssociation Named(DimensionAssociation association)
+	{
+		association.Name = "ACAD_DIMASSOC";
+		return association;
 	}
 
 	private bool cameBackAssociative(CadDocument doc)
