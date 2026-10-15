@@ -89,7 +89,7 @@
 
 
   <h1 id="ACadSharp_Entities_DimensionAngular3Pt" data-uid="ACadSharp.Entities.DimensionAngular3Pt" class="text-break">
-Class DimensionAngular3Pt  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L14"><i class="bi bi-code-slash"></i></a>
+Class DimensionAngular3Pt  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -104,7 +104,7 @@ Class DimensionAngular3Pt  <a class="header-action link-secondary" title="View s
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DxfName(&quot;DIMENSION&quot;)]
 [DxfSubClass(&quot;AcDb3PointAngularDimension&quot;)]
-public class DimensionAngular3Pt : Dimension, IEntity, IHandledCadObject, IGeometricEntity</code></pre>
+public class DimensionAngular3Pt : Dimension, IEntity, IHandledCadObject, IGeometricEntity, IOrientable</code></pre>
   </div>
 
 
@@ -127,6 +127,7 @@ public class DimensionAngular3Pt : Dimension, IEntity, IHandledCadObject, IGeome
       <div><a class="xref" href="ACadSharp.Entities.IEntity.html">IEntity</a></div>
       <div><a class="xref" href="ACadSharp.IHandledCadObject.html">IHandledCadObject</a></div>
       <div><a class="xref" href="ACadSharp.Entities.IGeometricEntity.html">IGeometricEntity</a></div>
+      <div><a class="xref" href="ACadSharp.IOrientable.html">IOrientable</a></div>
     </dd>
   </dl>
 
@@ -246,9 +247,6 @@ public class DimensionAngular3Pt : Dimension, IEntity, IHandledCadObject, IGeome
       <a class="xref" href="ACadSharp.Entities.Dimension.html#ACadSharp_Entities_Dimension_dimensionRadialLine_CSMath_XY_CSMath_XY_System_Double_System_Int16_">Dimension.dimensionRadialLine(XY, XY, double, short)</a>
     </div>
     <div>
-      <a class="xref" href="ACadSharp.Entities.Dimension.html#ACadSharp_Entities_Dimension_tableOnRemove_System_Object_ACadSharp_CollectionChangedEventArgs_">Dimension.tableOnRemove(object, CollectionChangedEventArgs)</a>
-    </div>
-    <div>
       <a class="xref" href="ACadSharp.Entities.Entity.html#ACadSharp_Entities_Entity_BookColor">Entity.BookColor</a>
     </div>
     <div>
@@ -271,6 +269,9 @@ public class DimensionAngular3Pt : Dimension, IEntity, IHandledCadObject, IGeome
     </div>
     <div>
       <a class="xref" href="ACadSharp.Entities.Entity.html#ACadSharp_Entities_Entity_Material">Entity.Material</a>
+    </div>
+    <div>
+      <a class="xref" href="ACadSharp.Entities.Entity.html#ACadSharp_Entities_Entity_ProxyGeometries">Entity.ProxyGeometries</a>
     </div>
     <div>
       <a class="xref" href="ACadSharp.Entities.Entity.html#ACadSharp_Entities_Entity_Transparency">Entity.Transparency</a>
@@ -342,13 +343,22 @@ public class DimensionAngular3Pt : Dimension, IEntity, IHandledCadObject, IGeome
       <a class="xref" href="ACadSharp.CadObject.html#ACadSharp_CadObject_CreateExtendedDictionary">CadObject.CreateExtendedDictionary()</a>
     </div>
     <div>
+      <a class="xref" href="ACadSharp.CadObject.html#ACadSharp_CadObject_IsValid_ACadSharp_IO_CadFileFormat_ACadSharp_ACadVersion_">CadObject.IsValid(CadFileFormat, ACadVersion)</a>
+    </div>
+    <div>
+      <a class="xref" href="ACadSharp.CadObject.html#ACadSharp_CadObject_IsValid_ACadSharp_IO_CadFileFormat_ACadSharp_ACadVersion_System_Collections_Generic_IList_System_String___">CadObject.IsValid(CadFileFormat, ACadVersion, out IList&lt;string&gt;)</a>
+    </div>
+    <div>
       <a class="xref" href="ACadSharp.CadObject.html#ACadSharp_CadObject_RemoveReactor_ACadSharp_CadObject_">CadObject.RemoveReactor(CadObject)</a>
     </div>
     <div>
       <a class="xref" href="ACadSharp.CadObject.html#ACadSharp_CadObject_ToString">CadObject.ToString()</a>
     </div>
     <div>
-      <a class="xref" href="ACadSharp.CadObject.html#ACadSharp_CadObject_updateCollection__1___0_ACadSharp_ICadCollection___0__">CadObject.updateCollection&lt;T&gt;(T, ICadCollection&lt;T&gt;)</a>
+      <a class="xref" href="ACadSharp.CadObject.html#ACadSharp_CadObject_updateCollectionEntry__1___0_System_Action___0__ACadSharp_Objects_Collections_ObjectDictionaryCollection___0__">CadObject.updateCollectionEntry&lt;T&gt;(T, Action&lt;T&gt;, ObjectDictionaryCollection&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="ACadSharp.CadObject.html#ACadSharp_CadObject_updateTableEntry__1___0_System_Action___0__ACadSharp_Tables_Collections_Table___0__">CadObject.updateTableEntry&lt;T&gt;(T, Action&lt;T&gt;, Table&lt;T&gt;)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -377,7 +387,7 @@ public class DimensionAngular3Pt : Dimension, IEntity, IHandledCadObject, IGeome
       <a class="xref" href="ACadSharp.Extensions.CadObjectExtensions.html#ACadSharp_Extensions_CadObjectExtensions_CloneTyped__1___0_">CadObjectExtensions.CloneTyped&lt;T&gt;(T)</a>
   </div>
   <div>
-      <a class="xref" href="CSMath.Geometry.LineExtensions.html#CSMath_Geometry_LineExtensions_TryFindIntersection__2___0___0___1__">LineExtensions.TryFindIntersection&lt;T, R&gt;(T, T, out R)</a>
+      <a class="xref" href="CSMath.Geometry.LineExtensions.html#CSMath_Geometry_LineExtensions_TryFindIntersection__3___0___1___2__">LineExtensions.TryFindIntersection&lt;T, S, R&gt;(T, S, out R)</a>
   </div>
   </dd></dl>
 
@@ -397,7 +407,7 @@ Dxf class name <a class="xref" href="ACadSharp.DxfSubclassMarker.html#ACadSharp_
 
   <h3 id="ACadSharp_Entities_DimensionAngular3Pt__ctor" data-uid="ACadSharp.Entities.DimensionAngular3Pt.#ctor">
   DimensionAngular3Pt()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L74"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Default constructor.</p>
@@ -428,7 +438,7 @@ Dxf class name <a class="xref" href="ACadSharp.DxfSubclassMarker.html#ACadSharp_
 
   <h3 id="ACadSharp_Entities_DimensionAngular3Pt_AngleVertex" data-uid="ACadSharp.Entities.DimensionAngular3Pt.AngleVertex">
   AngleVertex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Definition point for diameter, radius, and angular dimensions (in WCS).</p>
@@ -464,7 +474,7 @@ public XYZ AngleVertex { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_DimensionAngular3Pt_FirstPoint" data-uid="ACadSharp.Entities.DimensionAngular3Pt.FirstPoint">
   FirstPoint
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Definition point for linear and angular dimensions (in WCS).</p>
@@ -497,7 +507,7 @@ public XYZ FirstPoint { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_DimensionAngular3Pt_Measurement" data-uid="ACadSharp.Entities.DimensionAngular3Pt.Measurement">
   Measurement
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L35"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Actual measurement.</p>
@@ -529,7 +539,7 @@ public XYZ FirstPoint { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_DimensionAngular3Pt_ObjectName" data-uid="ACadSharp.Entities.DimensionAngular3Pt.ObjectName">
   ObjectName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L57"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The CAD class name of an object.</p>
@@ -561,7 +571,7 @@ public XYZ FirstPoint { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_DimensionAngular3Pt_ObjectType" data-uid="ACadSharp.Entities.DimensionAngular3Pt.ObjectType">
   ObjectType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L60"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the object type.</p>
@@ -593,7 +603,7 @@ public XYZ FirstPoint { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_DimensionAngular3Pt_SecondPoint" data-uid="ACadSharp.Entities.DimensionAngular3Pt.SecondPoint">
   SecondPoint
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L65"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Definition point for linear and angular dimensions (in WCS)</p>
@@ -626,7 +636,7 @@ public XYZ SecondPoint { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_DimensionAngular3Pt_SubclassMarker" data-uid="ACadSharp.Entities.DimensionAngular3Pt.SubclassMarker">
   SubclassMarker
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Object Subclass marker.</p>
@@ -662,7 +672,7 @@ public XYZ SecondPoint { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_DimensionAngular3Pt_ApplyTransform_CSMath_Transform_" data-uid="ACadSharp.Entities.DimensionAngular3Pt.ApplyTransform(CSMath.Transform)">
   ApplyTransform(Transform)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L77"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Apply a transform matrix to this entity.</p>
@@ -694,7 +704,7 @@ public XYZ SecondPoint { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_DimensionAngular3Pt_GetBoundingBox" data-uid="ACadSharp.Entities.DimensionAngular3Pt.GetBoundingBox">
   GetBoundingBox()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L96"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the bounding box aligned with the axis XYZ that occupies this entity.</p>
@@ -727,7 +737,7 @@ public XYZ SecondPoint { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_DimensionAngular3Pt_UpdateBlock" data-uid="ACadSharp.Entities.DimensionAngular3Pt.UpdateBlock">
   UpdateBlock()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L90"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the block that represents this dimension.</p>
@@ -757,7 +767,7 @@ public XYZ SecondPoint { get; set; }</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L14" class="edit-link">Edit this page</a>
+          <a href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/DimensionAngular3Pt.cs/#L15" class="edit-link">Edit this page</a>
         </div>
 
 

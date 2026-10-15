@@ -89,7 +89,7 @@
 
 
   <h1 id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef" class="text-break">
-Class DimensionAssociation.OsnapPointRef  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L8"><i class="bi bi-code-slash"></i></a>
+Class DimensionAssociation.OsnapPointRef  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -147,7 +147,7 @@ Class DimensionAssociation.OsnapPointRef  <a class="header-action link-secondary
     <dt>Extension Methods</dt>
     <dd>
   <div>
-      <a class="xref" href="CSMath.Geometry.LineExtensions.html#CSMath_Geometry_LineExtensions_TryFindIntersection__2___0___0___1__">LineExtensions.TryFindIntersection&lt;T, R&gt;(T, T, out R)</a>
+      <a class="xref" href="CSMath.Geometry.LineExtensions.html#CSMath_Geometry_LineExtensions_TryFindIntersection__3___0___1___2__">LineExtensions.TryFindIntersection&lt;T, S, R&gt;(T, S, out R)</a>
   </div>
   </dd></dl>
 
@@ -163,16 +163,16 @@ Class DimensionAssociation.OsnapPointRef  <a class="header-action link-secondary
 
   <h3 id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_Geometry" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.Geometry">
   Geometry
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets or sets the associated geometry object.</p>
+  <div class="markdown level1 summary"><p>Gets or sets the associated geometry object: the first object of <a class="xref" href="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.html#ACadSharp_Objects_DimensionAssociation_OsnapPointRef_GeometryPath">GeometryPath</a>, the one
+in the same space as the dimension (and the one that carries the reactor back to the association).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DxfCodeValue(DxfReferenceType.Handle, new int[] { 331 })]
-public CadObject Geometry { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public CadObject Geometry { get; set; }</code></pre>
   </div>
 
 
@@ -188,6 +188,9 @@ public CadObject Geometry { get; set; }</code></pre>
 
 
 
+  <h4 class="section" id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_Geometry_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Setting it replaces the whole path with this single object.</p>
+</div>
 
 
 
@@ -196,7 +199,7 @@ public CadObject Geometry { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_GeometryParameter" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.GeometryParameter">
   GeometryParameter
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the geometry parameter used for the Near object snap (Osnap).</p>
@@ -225,11 +228,47 @@ public double GeometryParameter { get; set; }</code></pre>
 
 
 
+  <a id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_GeometryPath_" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.GeometryPath*"></a>
+
+  <h3 id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_GeometryPath" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.GeometryPath">
+  GeometryPath
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The path to the snapped geometry, outermost first: a single object, or the block reference(s)
+followed by the object inside the block. Empty when the point has no object snap.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;CadObject&gt; GeometryPath { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="ACadSharp.CadObject.html">CadObject</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_GeometryPath_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>DXF code 331, repeated once per object of the path.</p>
+</div>
+
+
+
+
   <a id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_GsMarker_" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.GsMarker*"></a>
 
   <h3 id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_GsMarker" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.GsMarker">
   GsMarker
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the graphics system marker (GsMarker) associated with the main object.</p>
@@ -262,7 +301,7 @@ public int GsMarker { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_HasLastPointRef" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.HasLastPointRef">
   HasLastPointRef
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L55"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -294,7 +333,7 @@ public bool HasLastPointRef { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_IntersectionGsMarker" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.IntersectionGsMarker">
   IntersectionGsMarker
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -322,11 +361,46 @@ public int IntersectionGsMarker { get; set; }</code></pre>
 
 
 
+  <a id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_IntersectionPath_" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.IntersectionPath*"></a>
+
+  <h3 id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_IntersectionPath" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.IntersectionPath">
+  IntersectionPath
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The path to the second object of an intersection (or apparent intersection) snap, outermost first.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;CadObject&gt; IntersectionPath { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="ACadSharp.CadObject.html">CadObject</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_IntersectionPath_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>DXF code 332.</p>
+</div>
+
+
+
+
   <a id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_IntersectionSubType_" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.IntersectionSubType*"></a>
 
   <h3 id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_IntersectionSubType" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.IntersectionSubType">
   IntersectionSubType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -354,11 +428,79 @@ public SubentType IntersectionSubType { get; set; }</code></pre>
 
 
 
+  <a id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_IntersectionXrefPaths_" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.IntersectionXrefPaths*"></a>
+
+  <h3 id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_IntersectionXrefPaths" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.IntersectionXrefPaths">
+  IntersectionXrefPaths
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Handles (as strings) of the Xref objects of the intersection path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; IntersectionXrefPaths { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_IntersectionXrefPaths_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>DXF code 302.</p>
+</div>
+
+
+
+
+  <a id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_LastPointRef_" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.LastPointRef*"></a>
+
+  <h3 id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_LastPointRef" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.LastPointRef">
+  LastPointRef
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The reference that follows this one in the same slot when <a class="xref" href="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.html#ACadSharp_Objects_DimensionAssociation_OsnapPointRef_HasLastPointRef">HasLastPointRef</a> is set
+(AutoCAD writes it after a perpendicular snap: the point the perpendicular is taken from).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DimensionAssociation.OsnapPointRef LastPointRef { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ACadSharp.Objects.DimensionAssociation.html">DimensionAssociation</a>.<a class="xref" href="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.html">OsnapPointRef</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_ObjectOsnapType_" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.ObjectOsnapType*"></a>
 
   <h3 id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_ObjectOsnapType" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.ObjectOsnapType">
   ObjectOsnapType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the object snap type associated with the entity.</p>
@@ -391,7 +533,7 @@ public ObjectOsnapType ObjectOsnapType { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_OsnapPoint" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.OsnapPoint">
   OsnapPoint
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the object snap (Osnap) point in world coordinate system (WCS).</p>
@@ -428,7 +570,7 @@ operations.</p>
 
   <h3 id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_SubentType" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.SubentType">
   SubentType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the type of the rotated dimension, indicating whether it is parallel or perpendicular.</p>
@@ -457,11 +599,83 @@ public SubentType SubentType { get; set; }</code></pre>
 
 
 
+  <a id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_XrefPaths_" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.XrefPaths*"></a>
+
+  <h3 id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_XrefPaths" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.XrefPaths">
+  XrefPaths
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Handles (as strings) of the Xref objects of the main path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; XrefPaths { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_XrefPaths_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>DXF code 301.</p>
+</div>
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_Clone_" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.Clone*"></a>
+
+  <h3 id="ACadSharp_Objects_DimensionAssociation_OsnapPointRef_Clone" data-uid="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.Clone">
+  Clone()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Copies the reference, its lists and the chained reference. The referenced objects themselves are not
+copied (the copy points to the same geometry), but no list is shared with the original.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DimensionAssociation.OsnapPointRef Clone()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ACadSharp.Objects.DimensionAssociation.html">DimensionAssociation</a>.<a class="xref" href="ACadSharp.Objects.DimensionAssociation.OsnapPointRef.html">OsnapPointRef</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L8" class="edit-link">Edit this page</a>
+          <a href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Objects/DimensionAssociation.OsnapPointRef.cs/#L9" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -89,7 +89,7 @@
 
 
   <h1 id="ACadSharp_Entities_Polyline_1" data-uid="ACadSharp.Entities.Polyline`1" class="text-break">
-Class Polyline&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L14"><i class="bi bi-code-slash"></i></a>
+Class Polyline&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -104,7 +104,7 @@ Class Polyline&lt;T&gt;  <a class="header-action link-secondary" title="View sou
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DxfName(&quot;POLYLINE&quot;)]
 [DxfSubClass(null, true)]
-public abstract class Polyline&lt;T&gt; : Entity, IPolyline, IEntity, IHandledCadObject, IGeometricEntity where T : Entity, IVertex</code></pre>
+public abstract class Polyline&lt;T&gt; : Entity, IPolyline, IEntity, IHandledCadObject, IGeometricEntity, IOrientable where T : Entity, IVertex</code></pre>
   </div>
 
 
@@ -132,6 +132,7 @@ public abstract class Polyline&lt;T&gt; : Entity, IPolyline, IEntity, IHandledCa
       <div><a class="xref" href="ACadSharp.Entities.IEntity.html">IEntity</a></div>
       <div><a class="xref" href="ACadSharp.IHandledCadObject.html">IHandledCadObject</a></div>
       <div><a class="xref" href="ACadSharp.Entities.IGeometricEntity.html">IGeometricEntity</a></div>
+      <div><a class="xref" href="ACadSharp.IOrientable.html">IOrientable</a></div>
     </dd>
   </dl>
 
@@ -165,6 +166,9 @@ public abstract class Polyline&lt;T&gt; : Entity, IPolyline, IEntity, IHandledCa
     </div>
     <div>
       <a class="xref" href="ACadSharp.Entities.Entity.html#ACadSharp_Entities_Entity_Material">Entity.Material</a>
+    </div>
+    <div>
+      <a class="xref" href="ACadSharp.Entities.Entity.html#ACadSharp_Entities_Entity_ProxyGeometries">Entity.ProxyGeometries</a>
     </div>
     <div>
       <a class="xref" href="ACadSharp.Entities.Entity.html#ACadSharp_Entities_Entity_SubclassMarker">Entity.SubclassMarker</a>
@@ -206,9 +210,6 @@ public abstract class Polyline&lt;T&gt; : Entity, IPolyline, IEntity, IHandledCa
       <a class="xref" href="ACadSharp.Entities.Entity.html#ACadSharp_Entities_Entity_getWorldMatrix_CSMath_Transform_CSMath_XYZ_CSMath_XYZ_CSMath_Matrix3__CSMath_Matrix3__">Entity.getWorldMatrix(Transform, XYZ, XYZ, out Matrix3, out Matrix3)</a>
     </div>
     <div>
-      <a class="xref" href="ACadSharp.Entities.Entity.html#ACadSharp_Entities_Entity_tableOnRemove_System_Object_ACadSharp_CollectionChangedEventArgs_">Entity.tableOnRemove(object, CollectionChangedEventArgs)</a>
-    </div>
-    <div>
       <a class="xref" href="ACadSharp.Entities.Entity.html#ACadSharp_Entities_Entity_transformNormal_CSMath_Transform_CSMath_XYZ_">Entity.transformNormal(Transform, XYZ)</a>
     </div>
     <div>
@@ -245,13 +246,22 @@ public abstract class Polyline&lt;T&gt; : Entity, IPolyline, IEntity, IHandledCa
       <a class="xref" href="ACadSharp.CadObject.html#ACadSharp_CadObject_CreateExtendedDictionary">CadObject.CreateExtendedDictionary()</a>
     </div>
     <div>
+      <a class="xref" href="ACadSharp.CadObject.html#ACadSharp_CadObject_IsValid_ACadSharp_IO_CadFileFormat_ACadSharp_ACadVersion_">CadObject.IsValid(CadFileFormat, ACadVersion)</a>
+    </div>
+    <div>
+      <a class="xref" href="ACadSharp.CadObject.html#ACadSharp_CadObject_IsValid_ACadSharp_IO_CadFileFormat_ACadSharp_ACadVersion_System_Collections_Generic_IList_System_String___">CadObject.IsValid(CadFileFormat, ACadVersion, out IList&lt;string&gt;)</a>
+    </div>
+    <div>
       <a class="xref" href="ACadSharp.CadObject.html#ACadSharp_CadObject_RemoveReactor_ACadSharp_CadObject_">CadObject.RemoveReactor(CadObject)</a>
     </div>
     <div>
       <a class="xref" href="ACadSharp.CadObject.html#ACadSharp_CadObject_ToString">CadObject.ToString()</a>
     </div>
     <div>
-      <a class="xref" href="ACadSharp.CadObject.html#ACadSharp_CadObject_updateCollection__1___0_ACadSharp_ICadCollection___0__">CadObject.updateCollection&lt;T&gt;(T, ICadCollection&lt;T&gt;)</a>
+      <a class="xref" href="ACadSharp.CadObject.html#ACadSharp_CadObject_updateCollectionEntry__1___0_System_Action___0__ACadSharp_Objects_Collections_ObjectDictionaryCollection___0__">CadObject.updateCollectionEntry&lt;T&gt;(T, Action&lt;T&gt;, ObjectDictionaryCollection&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="ACadSharp.CadObject.html#ACadSharp_CadObject_updateTableEntry__1___0_System_Action___0__ACadSharp_Tables_Collections_Table___0__">CadObject.updateTableEntry&lt;T&gt;(T, Action&lt;T&gt;, Table&lt;T&gt;)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -289,7 +299,7 @@ public abstract class Polyline&lt;T&gt; : Entity, IPolyline, IEntity, IHandledCa
       <a class="xref" href="ACadSharp.Extensions.CadObjectExtensions.html#ACadSharp_Extensions_CadObjectExtensions_CloneTyped__1___0_">CadObjectExtensions.CloneTyped&lt;T&gt;(T)</a>
   </div>
   <div>
-      <a class="xref" href="CSMath.Geometry.LineExtensions.html#CSMath_Geometry_LineExtensions_TryFindIntersection__2___0___0___1__">LineExtensions.TryFindIntersection&lt;T, R&gt;(T, T, out R)</a>
+      <a class="xref" href="CSMath.Geometry.LineExtensions.html#CSMath_Geometry_LineExtensions_TryFindIntersection__3___0___1___2__">LineExtensions.TryFindIntersection&lt;T, S, R&gt;(T, S, out R)</a>
   </div>
   </dd></dl>
 
@@ -305,7 +315,7 @@ public abstract class Polyline&lt;T&gt; : Entity, IPolyline, IEntity, IHandledCa
 
   <h3 id="ACadSharp_Entities_Polyline_1__ctor" data-uid="ACadSharp.Entities.Polyline`1.#ctor">
   Polyline()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Default constructor.</p>
@@ -332,7 +342,7 @@ public abstract class Polyline&lt;T&gt; : Entity, IPolyline, IEntity, IHandledCa
 
   <h3 id="ACadSharp_Entities_Polyline_1__ctor_System_Collections_Generic_IEnumerable__0__System_Boolean_" data-uid="ACadSharp.Entities.Polyline`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Boolean)">
   Polyline(IEnumerable&lt;T&gt;, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L135"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L136"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -369,7 +379,7 @@ public abstract class Polyline&lt;T&gt; : Entity, IPolyline, IEntity, IHandledCa
 
   <h3 id="ACadSharp_Entities_Polyline_1_Elevation" data-uid="ACadSharp.Entities.Polyline`1.Elevation">
   Elevation
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The current elevation of the object.</p>
@@ -402,7 +412,7 @@ public double Elevation { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_Polyline_1_EndWidth" data-uid="ACadSharp.Entities.Polyline`1.EndWidth">
   EndWidth
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>End width.</p>
@@ -435,7 +445,7 @@ public double EndWidth { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_Polyline_1_Flags" data-uid="ACadSharp.Entities.Polyline`1.Flags">
   Flags
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Polyline flags.</p>
@@ -468,7 +478,7 @@ public virtual PolylineFlags Flags { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_Polyline_1_IsClosed" data-uid="ACadSharp.Entities.Polyline`1.IsClosed">
   IsClosed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Indicates that the polyline is closed.</p>
@@ -500,7 +510,7 @@ public virtual PolylineFlags Flags { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_Polyline_1_Layer" data-uid="ACadSharp.Entities.Polyline`1.Layer">
   Layer
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Specifies the layer for an object.</p>
@@ -532,7 +542,7 @@ public virtual PolylineFlags Flags { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_Polyline_1_LineType" data-uid="ACadSharp.Entities.Polyline`1.LineType">
   LineType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L73"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Linetype name (present if not BYLAYER).
@@ -565,7 +575,7 @@ The special name BYBLOCK indicates a floating linetype (optional)</p>
 
   <h3 id="ACadSharp_Entities_Polyline_1_MatchVerticesEntityProperties" data-uid="ACadSharp.Entities.Polyline`1.MatchVerticesEntityProperties">
   MatchVerticesEntityProperties
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L90"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets a value indicating whether entity properties in the <a class="xref" href="ACadSharp.Entities.Vertex.html">Vertex</a> should be equals to the polyline
@@ -598,7 +608,7 @@ when adding vertices or modifying the polyline properties.</p>
 
   <h3 id="ACadSharp_Entities_Polyline_1_Normal" data-uid="ACadSharp.Entities.Polyline`1.Normal">
   Normal
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L93"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Specifies the three-dimensional normal unit vector for the object.</p>
@@ -631,7 +641,7 @@ public XYZ Normal { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_Polyline_1_ObjectName" data-uid="ACadSharp.Entities.Polyline`1.ObjectName">
   ObjectName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L97"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The CAD class name of an object.</p>
@@ -663,7 +673,7 @@ public XYZ Normal { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_Polyline_1_SmoothSurface" data-uid="ACadSharp.Entities.Polyline`1.SmoothSurface">
   SmoothSurface
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L102"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Curves and smooth surface type.</p>
@@ -696,7 +706,7 @@ public SmoothSurfaceType SmoothSurface { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_Polyline_1_StartWidth" data-uid="ACadSharp.Entities.Polyline`1.StartWidth">
   StartWidth
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L108"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Start width.</p>
@@ -729,7 +739,7 @@ public double StartWidth { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_Polyline_1_Thickness" data-uid="ACadSharp.Entities.Polyline`1.Thickness">
   Thickness
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L112"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Specifies the distance a 2D object is extruded above or below its elevation.</p>
@@ -762,7 +772,7 @@ public double Thickness { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_Polyline_1_Vertices" data-uid="ACadSharp.Entities.Polyline`1.Vertices">
   Vertices
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L120"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L121"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Vertices that form this polyline.</p>
@@ -801,7 +811,7 @@ public double Thickness { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_Polyline_1_ApplyTransform_CSMath_Transform_" data-uid="ACadSharp.Entities.Polyline`1.ApplyTransform(CSMath.Transform)">
   ApplyTransform(Transform)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L145"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L146"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Apply a transform matrix to this entity.</p>
@@ -833,7 +843,7 @@ public double Thickness { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_Polyline_1_Clone" data-uid="ACadSharp.Entities.Polyline`1.Clone">
   Clone()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L163"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L164"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates a new object that is a copy of the current instance.</p>
@@ -869,7 +879,7 @@ public double Thickness { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_Polyline_1_GetBoundingBox" data-uid="ACadSharp.Entities.Polyline`1.GetBoundingBox">
   GetBoundingBox()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L177"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L178"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the bounding box aligned with the axis XYZ that occupies this entity.</p>
@@ -902,7 +912,7 @@ public double Thickness { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_Polyline_1_initCollections" data-uid="ACadSharp.Entities.Polyline`1.initCollections">
   initCollections()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L252"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L253"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -928,7 +938,7 @@ public double Thickness { get; set; }</code></pre>
 
   <h3 id="ACadSharp_Entities_Polyline_1_onAddVertices_System_Object_ACadSharp_CollectionChangedEventArgs_" data-uid="ACadSharp.Entities.Polyline`1.onAddVertices(System.Object,ACadSharp.CollectionChangedEventArgs)">
   onAddVertices(object, CollectionChangedEventArgs)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L258"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L259"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -961,7 +971,7 @@ public double Thickness { get; set; }</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L14" class="edit-link">Edit this page</a>
+          <a href="https://github.com/mdelanno/ACadSharp/blob/master/src/ACadSharp/Entities/PolyLine.cs/#L15" class="edit-link">Edit this page</a>
         </div>
 
 
