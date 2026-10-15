@@ -10,14 +10,14 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageProjectUrl>https://github.com/DomCR/ACadSharp</PackageProjectUrl>
 		<Copyright>Copyright (c) 2026 Albert Domenech</Copyright>
-		<Description>C# library to read/write cad files like dxf/dwg. Wiip build of ACadSharp 3.8.0 (branch dimassoc-pr1292 of github.com/mdelanno/ACadSharp): DIMASSOC read and written in DWG and DXF by the upstream pull request DomCR/ACadSharp#1292.</Description>
+		<Description>C# library to read/write cad files like dxf/dwg. Wiip build of ACadSharp 3.8.0 (branch xref-names-pr1238 of github.com/mdelanno/ACadSharp): DIMASSOC read and written in DWG and DXF by the upstream pull request DomCR/ACadSharp#1292, and xref-dependent table names ("Xref|Name") written in DXF by the upstream pull request DomCR/ACadSharp#1238.</Description>
 		<GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">True</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<PropertyGroup>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<Version>3.8.0.2</Version>
+		<Version>3.8.0.3</Version>
 		<PackageOutputPath>../nupkg</PackageOutputPath>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>../ACadSharp.snk</AssemblyOriginatorKeyFile>
